@@ -2,8 +2,9 @@
 <html class="dark" lang="es">
 <head>
     <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Neoalimentos | Bio-Optimización y Salud Regenerativa</title>
+    <link rel="icon" type="image/png" href="Neoalimentos_isotipo_2_favicon_200x200.png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     
+    <!-- Hoja de estilos Dark Tech personalizada -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Configuración del Tema Dark Tech -->
     <script>
         tailwind.config = {
@@ -53,11 +57,6 @@
         .progress-scan { position: relative; overflow: hidden; }
         .progress-scan::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0, 220, 230, 0.8), transparent); animation: scan 3s infinite linear; }
         @keyframes scan { 0% { left: -100%; } 100% { left: 200%; } }
-
-        /* Fondo dinámico de partículas CSS puro */
-        .particles-bg { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-        .particle { position: absolute; border-radius: 50%; background: rgba(0, 220, 230, 0.5); animation: float-up infinite linear; }
-        @keyframes float-up { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-10vh) scale(1); opacity: 0; } }
         
         /* Sistema de Filtro (Funnel) */
         .filter-content { display: none; opacity: 0; transition: opacity 0.5s ease; }
@@ -68,20 +67,21 @@
 </head>
 <body class="antialiased font-body-md relative">
 
-    <!-- Fondo de Partículas (Estética Bio-Tech) -->
-    <div class="particles-bg" id="particles"></div>
+    <!-- CANVAS DE FONDO DE MOLÉCULAS INTERACTIVO -->
+    <canvas id="molecule-canvas"></canvas>
 
     <!-- HEADER -->
     <header class="bg-surface-dim/60 backdrop-blur-3xl fixed top-0 w-full z-50 border-b border-white/5">
-        <div class="flex justify-between items-center px-6 md:px-10 py-4 max-w-7xl mx-auto">
-            <a href="#" class="block z-10">
+        <div class="flex justify-between items-center px-4 md:px-10 py-4 max-w-7xl mx-auto w-full">
+            <a href="#" class="block z-10 flex-shrink-0">
                 <img src="Neo_logo_neoalimentos_iso_texto_3.webp" alt="Neoalimentos Logo" class="h-8 md:h-10 w-auto object-contain">
             </a>
             <nav class="hidden md:flex gap-8 font-label-mono text-xs uppercase tracking-widest z-10">
                 <a href="#protocolos" class="text-on-surface-variant hover:text-surface-tint transition">Protocolos</a>
+                <a href="#cobertura" class="text-on-surface-variant hover:text-surface-tint transition">Cobertura</a>
                 <a href="https://blog.neoalimentos.com" class="text-on-surface-variant hover:text-surface-tint transition">Data Científica</a>
             </nav>
-            <button class="text-surface-tint font-label-mono text-xs border border-surface-tint px-4 py-2 rounded hover:bg-surface-tint/10 transition-colors uppercase tracking-widest z-10">
+            <button class="btn-acceso-satelital text-surface-tint font-label-mono text-xs border border-surface-tint px-4 py-2 rounded hover:bg-surface-tint/10 transition-colors uppercase tracking-widest z-10 flex-shrink-0">
                 Acceso Satelital
             </button>
         </div>
@@ -89,7 +89,7 @@
 
     <main class="relative z-10">
         <!-- HERO SECTION -->
-        <section class="relative pt-32 pb-20 px-6 min-h-[90vh] flex flex-col items-center justify-center text-center">
+        <section class="relative pt-32 pb-16 px-6 min-h-[85vh] flex flex-col items-center justify-center text-center">
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-surface-tint rounded-full blur-[200px] mix-blend-screen opacity-10 pointer-events-none"></div>
             
             <div class="inline-flex items-center gap-2 px-3 py-1 border border-outline-variant rounded-full glass-panel mb-8">
@@ -97,18 +97,47 @@
                 <span class="font-label-mono text-[11px] text-secondary-fixed uppercase tracking-wider">Laboratorio de Bio-Optimización Activo</span>
             </div>
             
-            <h1 class="font-display-lg text-5xl md:text-7xl text-primary mb-6 leading-tight tracking-tighter max-w-4xl mx-auto">
+            <h1 class="font-display-lg text-4xl sm:text-5xl md:text-7xl text-primary mb-6 leading-tight tracking-tighter max-w-4xl mx-auto">
                 Hackea tu biología. <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-surface-tint to-secondary-fixed">Retrasa el envejecimiento.</span>
             </h1>
             
-            <p class="font-body-md text-on-surface-variant text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+            <p class="font-body-md text-on-surface-variant text-base sm:text-lg md:text-xl mb-10 max-w-2xl mx-auto">
                 Sistemas nutracéuticos de cuarta generación diseñados para reprogramar tu energía, desinflamar tu cuerpo y llevar tu salud celular al máximo rendimiento.
             </p>
             
             <a href="#protocolos" class="bg-surface-tint text-black font-label-mono font-bold text-[14px] py-4 px-10 rounded hover:bg-primary transition-all glow-cyan uppercase tracking-widest inline-flex items-center gap-3">
                 Iniciar Diagnóstico <span class="material-symbols-outlined">south</span>
             </a>
+        </section>
+
+        <!-- ESTADÍSTICAS DINÁMICAS -->
+        <section class="stats-section">
+            <div class="stat-box">
+                <h2 class="counter" data-target="34">+0</h2>
+                <p>Países</p>
+                <span>con cobertura de entrega</span>
+            </div>
+            <div class="stat-box">
+                <h2 class="counter" data-target="3" data-suffix="M">+0</h2>
+                <p>Usuarios</p>
+                <span>en el planeta tierra</span>
+            </div>
+            <div class="stat-box">
+                <h2 class="counter" data-target="40">+0</h2>
+                <p>Neoalimentos</p>
+                <span>con Biotecnología Nutracéutica</span>
+            </div>
+            <div class="stat-box">
+                <h2 class="counter" data-target="1" data-suffix="M">+0</h2>
+                <p>Sticks</p>
+                <span>producidos por semana</span>
+            </div>
+            <div class="stat-box highlight-stat">
+                <h2>4ta GEN</h2>
+                <p>Probióticos</p>
+                <span>microencapsulados</span>
+            </div>
         </section>
 
         <!-- SECCIÓN DE FILTRO / EMBUDO INTERACTIVO (El "AI" Flow) -->
@@ -141,7 +170,6 @@
                     <div id="digestion" class="filter-content active p-6 md:p-12">
                         <div class="flex flex-col md:flex-row items-center gap-10">
                             <div class="w-full md:w-1/3 flex justify-center">
-                                <!-- Contenedor para imagen o icono del producto -->
                                 <div class="w-48 h-48 rounded-full bg-surface-dim border-2 border-surface-tint flex items-center justify-center glow-cyan relative overflow-hidden">
                                     <span class="material-symbols-outlined text-7xl text-surface-tint">microbiology</span>
                                 </div>
@@ -162,7 +190,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Enlace directo a tu página de ventas Carril 2 -->
                                 <a href="/flora-co" class="inline-flex items-center gap-2 bg-transparent border border-surface-tint text-surface-tint hover:bg-surface-tint hover:text-black font-label-mono text-sm py-3 px-8 rounded transition-all uppercase tracking-widest">
                                     Extraer Data y Adquirir <span class="material-symbols-outlined text-lg">arrow_forward</span>
                                 </a>
@@ -225,6 +252,30 @@
             </div>
         </section>
 
+        <!-- AVATARES DE AUTORIDAD (EDU-COMMERCE) -->
+        <section class="avatars-section">
+            <div class="avatar-card">
+                <div class="avatar-image male-avatar">
+                    <img src="ruta-avatar-masculino.png" alt="Autoridad en Biotecnología" onerror="this.onerror=null; this.src='Neoalimentos_isotipo_2_favicon_200x200.png'">
+                </div>
+                <div class="avatar-info">
+                    <span class="hud-label">SISTEMA: AUTORIDAD MBI</span>
+                    <h3>Ingeniería Biológica</h3>
+                    <p>Descifra los protocolos exactos para optimizar el funcionamiento celular y llevar la biotecnología a tu rutina diaria.</p>
+                </div>
+            </div>
+            <div class="avatar-card">
+                <div class="avatar-image female-avatar">
+                    <img src="ruta-avatar-femenino.png" alt="Biohacker" onerror="this.onerror=null; this.src='Neoalimentos_isotipo_2_favicon_200x200.png'">
+                </div>
+                <div class="avatar-info">
+                    <span class="hud-label">SISTEMA: BIOHACKING</span>
+                    <h3>Reprogramación Activa</h3>
+                    <p>Aplica la nutracéutica táctica a tu favor. Hackea tu biología para maximizar energía, enfoque y rendimiento físico.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- SECCIÓN DE AUTORIDAD Y MARCA -->
         <section class="py-24 px-6 bg-deep-void">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
@@ -240,13 +291,49 @@
                 </div>
                 <div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
                     <div class="glass-panel p-6 rounded-lg text-center flex flex-col items-center justify-center">
-                        <span class="font-display-lg text-4xl text-surface-tint mb-2">+30</span>
+                        <span class="font-display-lg text-4xl text-surface-tint mb-2">+34</span>
                         <span class="font-label-mono text-xs uppercase text-on-surface-variant">Países Activos</span>
                     </div>
                     <div class="glass-panel p-6 rounded-lg text-center flex flex-col items-center justify-center">
                         <span class="font-display-lg text-4xl text-secondary-fixed mb-2">4ta</span>
                         <span class="font-label-mono text-xs uppercase text-on-surface-variant">Gen. Nutracéutica</span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COBERTURA GLOBAL DE PAÍSES -->
+        <section id="cobertura" class="global-coverage">
+            <h2 class="section-title">Nodos de Distribución Activos</h2>
+            <div class="coverage-grid">
+                <div class="continent-block">
+                    <h3>🌎 Sudamérica</h3>
+                    <ul>
+                        <li>🇦🇷 Argentina</li><li>🇧🇴 Bolivia</li><li>🇧🇷 Brasil</li><li>🇨🇱 Chile</li>
+                        <li>🇨🇴 Colombia</li><li>🇪🇨 Ecuador</li><li>🇵🇪 Perú</li><li>🇺🇾 Uruguay</li>
+                    </ul>
+                </div>
+                <div class="continent-block">
+                    <h3>🌎 Centroamérica</h3>
+                    <ul>
+                        <li>🇨🇷 Costa Rica</li><li>🇬🇹 Guatemala</li><li>🇭🇳 Honduras</li><li>🇵🇦 Panamá</li>
+                    </ul>
+                </div>
+                <div class="continent-block">
+                    <h3>🌎 Norteamérica</h3>
+                    <ul>
+                        <li>🇲🇽 México</li><li>🇺🇸 Estados Unidos</li>
+                    </ul>
+                </div>
+                <div class="continent-block">
+                    <h3>🇪🇺 Europa</h3>
+                    <ul class="columns-2">
+                        <li>🇩🇪 Alemania</li><li>🇦🇹 Austria</li><li>🇧🇪 Bélgica</li><li>🇨🇾 Chipre</li>
+                        <li>🇭🇷 Croacia</li><li>🇸🇰 Eslovaquia</li><li>🇸🇮 Eslovenia</li><li>🇪🇸 España</li>
+                        <li>🇪🇪 Estonia</li><li>🇫🇮 Finlandia</li><li>🇫🇷 Francia</li><li>🇬🇷 Grecia</li>
+                        <li>🇳🇱 Países Bajos</li><li>🇮🇪 Irlanda</li><li>🇮🇹 Italia</li><li>🇱🇻 Letonia</li>
+                        <li>🇱🇹 Lituania</li><li>🇱🇺 Luxemburgo</li><li>🇲🇹 Malta</li><li>🇵🇹 Portugal</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -258,55 +345,29 @@
         <p class="font-label-mono text-[11px] text-outline opacity-60 text-center mb-4">© 2026 NEOALIMENTOS. ADVANCED BIO-OPTIMIZATION SYSTEMS.</p>
         <div class="flex gap-6 font-body-sm text-on-surface-variant">
             <a href="https://blog.neoalimentos.com" class="hover:text-surface-tint transition">Data (Blog)</a>
-            <a href="#" class="hover:text-surface-tint transition">Protocolos Logísticos</a>
+            <a href="#cobertura" class="hover:text-surface-tint transition">Protocolos Logísticos</a>
         </div>
     </footer>
 
-    <!-- SCRIPT PARA EL FILTRO Y PARTICULAS -->
+    <!-- SCRIPT EXTERNO (MOLÉCULAS Y CONTADORES DINÁMICOS) -->
+    <script src="script.js"></script>
+
+    <!-- SCRIPT PARA EL FILTRO INTERACTIVO -->
     <script>
-        // Lógica del filtro interactivo
         const btns = document.querySelectorAll('.filter-btn');
         const contents = document.querySelectorAll('.filter-content');
 
         btns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remover active de todos los botones y contenidos
                 btns.forEach(b => b.classList.remove('active'));
                 contents.forEach(c => c.classList.remove('active'));
                 
-                // Añadir active al clickeado
                 btn.classList.add('active');
                 const targetId = btn.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) targetEl.classList.add('active');
             });
         });
-
-        // Generador de partículas de fondo (ultra ligero)
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 20; // Mantenemos un número bajo para fluidez en móviles
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Propiedades aleatorias
-                const size = Math.random() * 5 + 2;
-                const left = Math.random() * 100;
-                const duration = Math.random() * 10 + 10;
-                const delay = Math.random() * 10;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${left}vw`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${delay}s`;
-                
-                container.appendChild(particle);
-            }
-        }
-        
-        window.onload = createParticles;
     </script>
 </body>
 </html>

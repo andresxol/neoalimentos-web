@@ -1,0 +1,287 @@
+/* ==========================================================================
+   Neoalimentos Web - Dark Tech / HUD Theme Stylesheet
+   ========================================================================== */
+
+/* Header & Mobile Overflow Prevention */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .btn-acceso-satelital {
+        font-size: 0.75rem;
+        padding: 8px 12px;
+        white-space: nowrap;
+        border: 1px solid #00f2fe;
+    }
+}
+
+/* Molecule Background Canvas */
+#molecule-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   1. Estadísticas Dinámicas
+   ========================================================================== */
+.stats-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 5%;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.stat-box {
+    background: rgba(0, 242, 254, 0.05);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    padding: 30px;
+    border-radius: 12px;
+    width: 250px;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    border-color: #00f2fe;
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.25);
+}
+
+.stat-box.highlight-stat {
+    border-color: rgba(96, 255, 152, 0.4);
+    box-shadow: 0 0 20px rgba(96, 255, 152, 0.15);
+}
+
+.stat-box.highlight-stat h2 {
+    color: #60ff98;
+    text-shadow: 0 0 10px rgba(96, 255, 152, 0.5);
+}
+
+.stat-box h2 {
+    font-size: 3rem;
+    color: #00f2fe;
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    font-family: 'Geist', 'JetBrains Mono', monospace;
+    font-weight: 700;
+}
+
+.stat-box p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+}
+
+.stat-box span {
+    font-size: 0.9rem;
+    color: #a0aab2;
+    display: block;
+}
+
+/* ==========================================================================
+   2. Avatares de Autoridad (Edu-Commerce)
+   ========================================================================== */
+.avatars-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 60px 5%;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.avatar-card {
+    background: linear-gradient(145deg, #0f171e, #0a0f14);
+    border-left: 3px solid #00f2fe;
+    border-right: 3px solid #00f2fe;
+    border-radius: 15px;
+    width: 45%;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 242, 254, 0.2);
+}
+
+.avatar-image {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.avatar-image img {
+    width: 200px;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.3));
+}
+
+.avatar-info {
+    padding: 24px;
+}
+
+.hud-label {
+    color: #00f2fe;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.avatar-info h3 {
+    font-family: 'Geist', sans-serif;
+    font-size: 1.5rem;
+    color: #e0fdff;
+    margin: 0 0 10px 0;
+}
+
+.avatar-info p {
+    color: #b9cacb;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ==========================================================================
+   3. Cobertura Global de Países
+   ========================================================================== */
+.global-coverage {
+    padding: 80px 5%;
+    position: relative;
+    z-index: 10;
+    max-w: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    color: #00f2fe;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-family: 'Geist', sans-serif;
+    text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.continent-block {
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 2px solid #00f2fe;
+    padding: 24px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: border-top-color 0.3s ease, background 0.3s ease;
+}
+
+.continent-block:hover {
+    background: rgba(0, 242, 254, 0.04);
+    border-top-color: #60ff98;
+}
+
+.continent-block h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.15rem;
+    color: #e0fdff;
+    margin-top: 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
+}
+
+.continent-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+.continent-block li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.columns-2 {
+    column-count: 2;
+    column-gap: 20px;
+}
+
+/* ==========================================================================
+   Optimizaciones Responsivas (Mobile-First Polish)
+   ========================================================================== */
+@media (max-width: 640px) {
+    .stats-section {
+        gap: 16px;
+        padding: 40px 4%;
+    }
+    
+    .stat-box {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+    }
+    
+    .avatar-card {
+        flex-direction: column;
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+    }
+    
+    .avatar-image {
+        width: 100%;
+    }
+    
+    .avatar-image img {
+        width: 100%;
+        max-height: 240px;
+    }
+    
+    .columns-2 {
+        column-count: 1;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
