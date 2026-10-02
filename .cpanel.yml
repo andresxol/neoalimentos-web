@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/vezphxvt/public_html/neoalimentos-web
+    - /bin/cp -R * $DEPLOYPATH
