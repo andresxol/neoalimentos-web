@@ -1,0 +1,17 @@
+# Sistema Operativo y Editor
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs y entornos
+*.log
+.env
+.env.local
